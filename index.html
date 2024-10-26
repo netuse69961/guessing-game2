@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لعبة تخمين الرقم</title>
-    <link rel="stylesheet" href="style.css"> <!-- تأكد من وجود هذا الملف -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>تخمين الرقم</h1>
-    <input type="number" id="guess" placeholder="أدخل رقمًا">
-    <button id="guessButton">تخمين</button>
-    <p id="result"></p>
-    
-    <script src="script.js"></script> <!-- تأكد من وجود هذا الملف -->
+    <div class="container">
+        <h1>تخمين الرقم!</h1>
+        <p>أنت في حالة تحدي! يجب عليك تخمين الرقم بين 1 و 100.</p>
+        <input type="number" id="guess" placeholder="أدخل رقمًا" min="1" max="100">
+        <button id="guessButton">تخمين</button>
+        <p id="result"></p>
+        <button id="restartButton" style="display: none;">إعادة البدء</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
