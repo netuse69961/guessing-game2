@@ -1,34 +1,18 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 let attempts = 0;
 
-document.getElementById('guessButton').addEventListener('click', function() {
-    let userGuess = parseInt(document.getElementById('guess').value);
-    let result = document.getElementById('result');
+document.getElementById('submitGuess').addEventListener('click', function() {
+    let userGuess = document.getElementById('guess').value;
     attempts++;
 
-    if (userGuess === randomNumber) {
-        result.textContent = `مبروك! لقد خمنت الرقم ${randomNumber} في ${attempts} محاولة! 🎉`;
-        result.style.color = 'green';
-        showRestartButton();
-    } else if (userGuess < randomNumber) {
-        result.textContent = 'الرقم أكبر من ذلك. حاول مرة أخرى!';
-        result.style.color = 'orange';
+    if (userGuess < randomNumber) {
+        document.getElementById('result').innerHTML = "رقمك أقل من الرقم الصحيح!";
+        document.getElementById('failureSound').play(); // تشغيل صوت الفشل
+    } else if (userGuess > randomNumber) {
+        document.getElementById('result').innerHTML = "رقمك أكبر من الرقم الصحيح!";
+        document.getElementById('failureSound').play(); // تشغيل صوت الفشل
     } else {
-        result.textContent = 'الرقم أقل من ذلك. حاول مرة أخرى!';
-        result.style.color = 'orange';
+        document.getElementById('result').innerHTML = `مبروك! لقد خمنت الرقم الصحيح ${randomNumber} في ${attempts} محاولة!`;
+        document.getElementById('successSound').play(); // تشغيل صوت النجاح
     }
-
-    document.getElementById('guess').value = ''; // مسح المدخلات بعد كل محاولة
-});
-
-function showRestartButton() {
-    document.getElementById('restartButton').style.display = 'inline-block';
-}
-
-document.getElementById('restartButton').addEventListener('click', function() {
-    randomNumber = Math.floor(Math.random() * 100) + 1;
-    attempts = 0;
-    document.getElementById('result').textContent = '';
-    document.getElementById('restartButton').style.display = 'none';
-    document.getElementById('guess').value = ''; // إعادة تعيين المدخلات
 });
